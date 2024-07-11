@@ -13,7 +13,7 @@ const AsteroidCard = ({ asteroid }: any) => {
   const [localFavorite, setLocalFavorite] = useState(false);
 
   async function addFavorite(id: string, name: string, url: string) {
-    const response = await axios.post(`http://localhost:3000/favorites`, {
+    await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/favorites`, {
       id: id,
       name: name,
       url: url,

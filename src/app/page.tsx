@@ -20,7 +20,7 @@ const Home = () => {
   async function fetchDataByDate(startDate: string, endDate: string) {
     setLoading(true);
     const response = await axios.get(
-      `http://localhost:3000/asteroids/${startDate}/${endDate}`
+      `${process.env.NEXT_PUBLIC_API_URL}/asteroids/${startDate}/${endDate}`
     );
     setAsteroids(response.data);
     setLoading(false);
@@ -28,7 +28,9 @@ const Home = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get("http://localhost:3000/asteroids");
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/asteroids`
+      );
       setAsteroids(response.data);
       setLoading(false);
     }

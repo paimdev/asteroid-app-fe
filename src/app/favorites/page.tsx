@@ -2,6 +2,7 @@
 
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import axios from "axios";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const Favorites = () => {
@@ -10,7 +11,9 @@ const Favorites = () => {
 
   useEffect(() => {
     async function fetchFavorites() {
-      const response = await axios.get("http://localhost:3000/favorites");
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/favorites`
+      );
       setFavorites(response.data);
       setLoading(false);
     }
@@ -23,6 +26,7 @@ const Favorites = () => {
 
   return (
     <div>
+      <Link href="/">Home</Link>
       <ul>
         {favorites.map((asteroid: any) => (
           <Card key={asteroid.id}>
