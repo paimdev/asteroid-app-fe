@@ -1,4 +1,11 @@
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Button } from "../ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
 
 const AsteroidList = ({ asteroidData }: any) => {
   const sortAsteroidsByName = (asteroids: any[]) => {
@@ -46,6 +53,9 @@ const AsteroidList = ({ asteroidData }: any) => {
                     }
                   </p>
                 </CardContent>
+                <CardFooter>
+                  <Button variant="secondary">Add to favorites</Button>
+                </CardFooter>
               </Card>
             ))}
           </ul>
