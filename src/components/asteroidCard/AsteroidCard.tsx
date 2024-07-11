@@ -7,14 +7,18 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import { useState } from "react";
 
 const AsteroidCard = ({ asteroid }: any) => {
+  const [localFavorite, setLocalFavorite] = useState(false);
+
   async function addFavorite(id: string, name: string, url: string) {
     const response = await axios.post(`http://localhost:3000/favorites`, {
       id: id,
       name: name,
       url: url,
     });
+    setLocalFavorite(true);
   }
 
   return (
@@ -46,6 +50,7 @@ const AsteroidCard = ({ asteroid }: any) => {
       <CardFooter>
         <Button
           variant="secondary"
+          disabled={localFavorite}
           onClick={() =>
             addFavorite(asteroid.id, asteroid.name, asteroid.nasa_jpl_url)
           }
