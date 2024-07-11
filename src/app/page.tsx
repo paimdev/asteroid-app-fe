@@ -5,6 +5,7 @@ import { DatePickerWithRange } from "@/components/datePickerWithRange/DatePicker
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { addDays, format } from "date-fns";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { DateRange } from "react-day-picker";
 
@@ -54,8 +55,11 @@ const Home = () => {
         >
           Search
         </Button>
+        <Link href="/favorites">Favorites</Link>
       </div>
-      <AsteroidList asteroidData={asteroids} />
+      <div className="mt-10">
+        <AsteroidList asteroidData={asteroids} />
+      </div>
     </div>
   );
 };
